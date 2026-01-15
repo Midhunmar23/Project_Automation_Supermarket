@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-15T17:03:58 IST" name="Suite" finished-at="2026-01-15T17:04:08 IST" duration-ms="10360">
+    <groups>
+      <group name="regression">
+        <method signature="ManageCategoryTest.verifyTheUserIsAbleToAddCategory()[pri:0, instance:testscrips.ManageCategoryTest@42a48628]" name="verifyTheUserIsAbleToAddCategory" class="testscrips.ManageCategoryTest"/>
+      </group> <!-- regression -->
+    </groups>
+    <test started-at="2026-01-15T17:03:58 IST" name="Test" finished-at="2026-01-15T17:04:08 IST" duration-ms="10360">
+      <class name="testscrips.ManageCategoryTest">
+        <test-method is-config="true" signature="browserIntilization(java.lang.String)[pri:0, instance:testscrips.ManageCategoryTest@42a48628]" started-at="2026-01-15T17:03:58 IST" name="browserIntilization" finished-at="2026-01-15T17:04:00 IST" duration-ms="2172" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserIntilization -->
+        <test-method signature="verifyTheUserIsAbleToAddCategory()[pri:0, instance:testscrips.ManageCategoryTest@42a48628]" started-at="2026-01-15T17:04:00 IST" name="verifyTheUserIsAbleToAddCategory" description="verifyTheUserIsAbleToAddNewCategory" finished-at="2026-01-15T17:04:08 IST" duration-ms="8143" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyTheUserIsAbleToAddCategory -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:testscrips.ManageCategoryTest@42a48628]" started-at="2026-01-15T17:04:08 IST" name="closeBrowser" finished-at="2026-01-15T17:04:08 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- testscrips.ManageCategoryTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

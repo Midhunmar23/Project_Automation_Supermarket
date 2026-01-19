@@ -17,7 +17,7 @@ public class LogoffPage
 	  @FindBy(xpath="//p[text()='Dashboard']") WebElement Dashord;
 	  @FindBy( xpath="//a[@class='nav-link' and @data-toggle='dropdown' ]") WebElement Adminbutton;
 	 @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/logout' and @class='dropdown-item']")WebElement Logoutbuttonclick;
-	 @FindBy(xpath="//p[@class='login-box-msg']") WebElement Logingpagesession;
+	 @FindBy(xpath="//p[@class='login-box-msg']") WebElement Loginvalidationmessge;
 	 
 	 
 	  public WebDriver driver;
@@ -30,24 +30,7 @@ public class LogoffPage
 	    	 PageFactory.initElements(driver, this);
 		
 	      }
-
-		 public void enterTheUseName(String username1)
-	     {
-	    	 username.sendKeys(username1);
-	     }
-		 
 	     
-	      public void enterThePassword(String password1) 
-	      {
-	    	  password.sendKeys(password1);
-	      }
-	      public void ButtonClickonSinginButton() 
-	      {
-	    	 
-	    	  singinbutton.click();
-	      }
-         
-	      
 	      public void logoutButton()
 		     {
 	    	  Adminbutton.click();
@@ -59,9 +42,7 @@ public class LogoffPage
 		    	 Logoutbuttonclick.click();
 		     }
 		     
-		     public boolean isDisplayTheLogingPage()
-		     {
-				return Logingpagesession.isDisplayed();
-		    	 
-		     }
+		     public boolean isLoginPageDisplayed() {
+		          return Loginvalidationmessge.isDisplayed();
+		      }
 }

@@ -2,6 +2,7 @@ package utilities;
 
 import java.util.Set;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 public class PageUtility {
 	WebDriver driver;
 	Actions newactions;
-
+	JavascriptExecutor js;
 	public void selectByVisibleText(WebElement element, String visibleText) {
 		Select select = new Select(element);
 		select.selectByVisibleText(visibleText);
@@ -85,7 +86,22 @@ public class PageUtility {
 		return driver.getWindowHandles();
 
 	}
+	
+	public void javascriptExecutor(WebDriver driver) {
+        this.driver = driver;
+        this.js = (JavascriptExecutor) driver;
+    }
+	
+	public void scrollIntoView(String xpath) {
+        js.executeScript(
+            "document.evaluate(arguments[0], document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true);",
+            xpath
+        );
+    }
 
+    public void scrollToBottom() {
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
 	
 
 }

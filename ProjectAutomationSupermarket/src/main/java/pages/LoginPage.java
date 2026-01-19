@@ -17,10 +17,9 @@ public class LoginPage
 	  @FindBy(xpath="//input[@name='password']")WebElement password;
 	  @FindBy(xpath="//button[text()='Sign In']")WebElement singinbutton;
 	  @FindBy(xpath="//p[text()='Dashboard']") WebElement Dashord;
-	 @FindBy(xpath="//div[contains(@class,'alert alert-danger ') ]") WebElement LogingValidationMessageforIncorrectUsername;
-	 @FindBy( xpath="//a[@class='nav-link' and @data-toggle='dropdown']") WebElement Logoutbutton;
-	 @FindBy(xpath="//i[@class='ace-icon fa fa-power-off']")WebElement Logoutbuttonclick;
-	 @FindBy(xpath="//p[@class='login-box-msg']") WebElement Logingpagesession;
+	 @FindBy(xpath="//div[contains(@class,'alert alert-danger ') ]") WebElement  Loginvalidationmessge;
+	
+	 
 	 
 	  
 	  public WebDriver driver;
@@ -34,7 +33,7 @@ public class LoginPage
 		
 	      }
 
-		 public void enterTheUseName(String username1)
+		 public void enterTheUserName(String username1)
 	     {
 	    	 username.sendKeys(username1);
 	     }
@@ -64,17 +63,15 @@ public class LoginPage
 	    	   utils.mouseHover(element);
 	       }*/
 	      
-	      public boolean isDashboardDisplayed()
-	      {
-	    	  return Dashord.isDisplayed();
-	      }
-	      
-	     public boolean isValidationMessageForIncorrectUsernameDisplayed()
-	      {
-			return LogingValidationMessageforIncorrectUsername.isDisplayed() ;
-	    	  
-	      }
 	     
+	      
+	      public boolean isDashboardDisplayed() {
+	    	    return Dashord.isDisplayed();
+	    	}
+	      
+	      public boolean isLoginPageDisplayed() {
+	          return Loginvalidationmessge.isDisplayed();
+	      }
 	   
 	     
 	     

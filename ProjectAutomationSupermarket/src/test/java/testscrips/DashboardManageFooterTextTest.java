@@ -2,33 +2,49 @@ package testscrips;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pages.ContactUsPage;
 import pages.DashboardManageFooterTextPage;
+import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class DashboardManageFooterTextTest extends Base {
 
-	@Test(groups = { "regression" }, description = "verifyTheUserIsAbleAddDetailsFromConatctUsPage")
+	@Test(groups = {
+			"regression" }, description = "verifyTheUserIsAbleAddDetailsFromConatctUsPage", retryAnalyzer = retry.Retry.class)
 	public void verifyTheUserIsAbleAddDetailsFromManageFooterPage() throws IOException {
-		// String Username="admin";
-		// String Password="admin";
-		String Username = ExcelUtility.getStringData(1, 0, "Loginpage");
-		String Password = ExcelUtility.getStringData(1, 1, "Loginpage");
-		DashboardManageFooterTextPage dashboardmanagefootertextpage = new DashboardManageFooterTextPage(driver);
-		dashboardmanagefootertextpage.enterTheUseName(Username);
-		dashboardmanagefootertextpage.enterThePassword(Password);
-		dashboardmanagefootertextpage.ButtonClickonSinginButton();
-		dashboardmanagefootertextpage.manageFooterText();
-		dashboardmanagefootertextpage.actionFooterText();
-		String Address = ExcelUtility.getStringData(1, 0, "ContactFooterInfo");
-		dashboardmanagefootertextpage.enterTheAddressFooterManage(Address);
-		String Email = ExcelUtility.getStringData(2, 0, "ContactFooterInfo");
-		dashboardmanagefootertextpage.enterTheEmailFooterManage(Email);
-		String Phone = ExcelUtility.getStringData(3, 0, "ContactFooterInfo");
-		dashboardmanagefootertextpage.enterThePhoneFooterManage(Phone);
-		dashboardmanagefootertextpage.updatebuttonManagecotactpage();
+
+		String username = ExcelUtility.getStringData(1, 0, "LogingData");
+		String password = ExcelUtility.getStringData(1, 1, "LogingData");
+
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterTheUserName(username);
+		loginPage.enterThePassword(password);
+		loginPage.ButtonClickonSinginButton();
+
+		DashboardManageFooterTextPage dashboardManageFooterTextPage = new DashboardManageFooterTextPage(driver);
+		dashboardManageFooterTextPage.manageFooterText();
+		dashboardManageFooterTextPage.actionFooterText();
+
+		/*
+		 * String address= "1234avenuew"; String email="midhun254@yopmail.com"; String
+		 * phone="9746970355";
+		 */
+		String address = ExcelUtility.getStringData(0, 0, "ContactFooterInfo");
+		String email = ExcelUtility.getStringData(1, 0, "ContactFooterInfo");
+		String phone = ExcelUtility.getIntegerData(2, 0, "ContactFooterInfo");
+
+		dashboardManageFooterTextPage.enterTheAddressFooterManage(address);
+		dashboardManageFooterTextPage.enterTheEmailFooterManage(email);
+		dashboardManageFooterTextPage.enterThePhoneFooterManage(phone);
+
+		dashboardManageFooterTextPage.updateButtonManageContactPage();
+
+		boolean AlertFooterTextUpdatedSuccessfully = dashboardManageFooterTextPage.AlertFooterTextUpdatedSuccessfully();
+		Assert.assertTrue(AlertFooterTextUpdatedSuccessfully, Constant.FOOTERTEXTUPDATEDSUCCESSFULLYALERT);
 	}
 
 }

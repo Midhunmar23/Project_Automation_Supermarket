@@ -22,6 +22,7 @@ public class DashboardManageNewsPage
 	   @FindBy(id="news") WebElement NewsTextArea;
 	   @FindBy(xpath="//button[@name='create']") WebElement SaveButtonClick;
 	   @FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") WebElement alrtmessgae;
+	  
 	   
 	     public WebDriver driver;
 	     FileUploadUtility fileuploadutility= new FileUploadUtility(); 
@@ -82,18 +83,15 @@ public class DashboardManageNewsPage
 	        }
 	        
 	        
-	        public boolean isAlertDisplayed()
+	        public boolean isAlerNewNewsCreatedtDisplayed()
 	        {
 				return alrtmessgae.isDisplayed();
 				
 	        	
 	        }
 	        
-	        public void utilAlertMethord(WebElement  element)
-	        {
-	        	PageUtility pageutility= new PageUtility();
-	        	pageutility.alertDismiss(alrtmessgae);
-	        }
+	       
+	       
 	   
 
 }

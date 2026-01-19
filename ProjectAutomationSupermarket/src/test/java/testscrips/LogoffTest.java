@@ -5,26 +5,30 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import constant.Constant;
 import pages.DashboardManageNewsPage;
+import pages.LoginPage;
 import pages.LogoffPage;
 import utilities.ExcelUtility;
 
 public class LogoffTest extends Base {
 
-	@Test(groups = { "regression" }, description = "verifyTheUserIsAbleToLogoffFromTheCreatedAccount")
+	@Test(groups = {
+			"regression" }, description = "verifyTheUserIsAbleToLogoffFromTheCreatedAccount", retryAnalyzer = retry.Retry.class)
 	public void verifyTheUserIsAbleToLogoffFromTheCreatedAccount() throws IOException {
-		// String Username="admin";
-		// String Password="admin";
-		String Username = ExcelUtility.getStringData(1, 0, "Loginpage");
-		String Password = ExcelUtility.getStringData(1, 1, "Loginpage");
-		LogoffPage logofftest = new LogoffPage(driver);
-		logofftest.enterTheUseName(Username);
-		logofftest.enterThePassword(Password);
-		logofftest.ButtonClickonSinginButton();
-		logofftest.logoutButton();
-		logofftest.logOffButtonClick();
-		boolean Singinpage = logofftest.isDisplayTheLogingPage();
-		Assert.assertTrue(Singinpage, "By Giving the Valid username and Vaild password user is not able to Loging");
+		String Username = ExcelUtility.getStringData(1, 0, "LogingData");
+		String Password = ExcelUtility.getStringData(1, 1, "LogingData");
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterTheUserName(Username);
+		loginPage.enterThePassword(Password);
+		loginPage.ButtonClickonSinginButton();
+
+		LogoffPage logoffpage = new LogoffPage(driver);
+		logoffpage.logoutButton();
+		logoffpage.logOffButtonClick();
+		boolean isLoginPageDisplayed = logoffpage.isLoginPageDisplayed();
+		Assert.assertTrue(isLoginPageDisplayed, Constant.INVALIDLOGINERRORMESSAGE);
+
 	}
 
 }

@@ -3,17 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testscrips.LoginTest">
+      <class name="testscrips.DashboardManageNewsTest">
         <methods>
-          <include name="verifyThatTheUserShouldnotabletoLoginWithInvalidPasswordandCorrectUsername"/>
-          <include name="verifyThatTheUserShouldNotAbleToLoginWithInvalidUserCrediations"/>
-          <include name="verifyTheUserIsAbleToLoginTheSinginUsingValdCrediatiols"/>
-          <include name="verifyThatTheUserShouldNotMakeTheFiledNull"/>
-          <include name="verifyThatTheUserSholudNotAbleToSinginWithinVaidUsernameandInvalidPassword"/>
+          <include name="verifyTheUserIsAbleToLoginTheSinginUsingValdCrediatiolsAndWithGivingValidTextinTheTextareaItShouldDispayAAlertMeassgeManageNews"/>
           <include name="browserIntilization"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- testscrips.LoginTest -->
+      </class> <!-- testscrips.DashboardManageNewsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

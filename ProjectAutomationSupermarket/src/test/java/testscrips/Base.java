@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -62,8 +63,12 @@ public class Base
 	}
 	
 	@AfterMethod (alwaysRun = true)
-	public void closeBrowser()
-	{
+	public void closeBrowser(ITestResult iTestResult) {
+		/*{if (iTestResult.getStatus() == ITestResult.FAILURE) {
+			scrshot = new ScreenShotUtility();
+			scrshot.getScreenShot(driver, iTestResult.getName());
+		}*/
+		
 		//driver.close();
 	}
 

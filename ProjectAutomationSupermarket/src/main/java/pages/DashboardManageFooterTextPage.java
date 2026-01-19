@@ -10,24 +10,19 @@ import utilities.Waitutility;
 
 public class DashboardManageFooterTextPage {
 
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement username;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement password;
-	@FindBy(xpath = "//button[text()='Sign In']")
-	WebElement singinbutton;
+	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext' and @class='small-box-footer']")
 	WebElement ManageFooterText;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Footertext/edit?edit=1' and @class='btn btn-sm btn btn-primary btncss']")
 	WebElement actionFooterText;
-	@FindBy(xpath = "//textarea[@id='content']")
+	@FindBy(css="textarea#content")
 	WebElement ManagefooterAddress;
-	@FindBy(id = "email")
+	@FindBy(css="input.form-control[name='email']")
 	WebElement ContatpageEmail;
-	@FindBy(id = "phone")
+	@FindBy(xpath="//input[@class='form-control' and @name='phone']")
 	WebElement ManageFooterpagePhonenumber;
-	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-info' ]")
-	WebElement UpdatebuttonManagecotactpage;
+	@FindBy(xpath="//button[@class='btn btn-block-sm btn-info']") WebElement UpdatebuttonManagecotactpage;
+	 @FindBy(xpath="//div[@class='alert alert-success alert-dismissible']") WebElement FooterTextUpdatedSuccessfully;
 
 	public WebDriver driver;
 	FileUploadUtility fileuploadutility = new FileUploadUtility();
@@ -36,20 +31,6 @@ public class DashboardManageFooterTextPage {
 	public DashboardManageFooterTextPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-	}
-
-	public void enterTheUseName(String username1) {
-		username.sendKeys(username1);
-	}
-
-	public void enterThePassword(String password1) {
-		password.sendKeys(password1);
-	}
-
-	public void ButtonClickonSinginButton() {
-
-		waitutility.waitForElementToBeClickable(driver, singinbutton);
-		singinbutton.click();
 	}
 
 	public void manageFooterText() {
@@ -61,23 +42,34 @@ public class DashboardManageFooterTextPage {
 	}
 
 	public void enterTheAddressFooterManage(String Address) {
+		
 		ManagefooterAddress.clear();
 		ManagefooterAddress.sendKeys(Address);
 	}
 
 	public void enterTheEmailFooterManage(String Email) {
-		ManagefooterAddress.clear();
-		ManagefooterAddress.sendKeys(Email);
+		ContatpageEmail.clear();
+		ContatpageEmail.sendKeys(Email);
 	}
 
 	public void enterThePhoneFooterManage(String Phone) {
-		ManagefooterAddress.clear();
-		ManagefooterAddress.sendKeys(Phone);
+		ManageFooterpagePhonenumber.clear();
+		ManageFooterpagePhonenumber.sendKeys(Phone);
 	}
 
-	public void updatebuttonManagecotactpage() {
+	public void updateButtonManageContactPage() {
 		UpdatebuttonManagecotactpage.click();
 
 	}
+	 public boolean AlertFooterTextUpdatedSuccessfully()
+     {
+ 		return FooterTextUpdatedSuccessfully.isDisplayed() ;
+   	  
+     }
+	 public boolean AlertFooterTextUpdatedNoCreated()
+     {
+ 		return FooterTextUpdatedSuccessfully.isDisplayed() ;
+   	  
+     }
 
 }

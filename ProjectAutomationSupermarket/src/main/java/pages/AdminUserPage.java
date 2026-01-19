@@ -10,76 +10,68 @@ import utilities.FileUploadUtility;
 import utilities.PageUtility;
 import utilities.Waitutility;
 
-public class AddAdminUserPage {
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement username;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement password;
-	@FindBy(xpath = "//button[text()='Sign In']")
-	WebElement singinbutton;
-	@FindBy(xpath = "//p[text()='Dashboard']")
-	WebElement Dashord;
+public class AdminUserPage {
+	
 	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
-	WebElement AddAdminuser;
+	WebElement Adminuser;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
 	WebElement Newadminuserbuttonclick;
-	@FindBy(id = "username")
+	@FindBy(xpath="//input[@class='form-control' and @name='username']")
 	WebElement Adminusername;
-	@FindBy(id = "password")
+	@FindBy(xpath="//input[@class='form-control' and @id='password']")
 	WebElement Adminpassword;
 	@FindBy(id = "user_type")
 	WebElement Adminusertype;
 	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-danger' and @name='Create']")
 	WebElement AdminSavebutton;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	WebElement UserCreatedSuccessfully;
+	
 
 	public WebDriver driver;
 	FileUploadUtility fileuploadutility = new FileUploadUtility();
 	Waitutility waitutility = new Waitutility();
 
-	public AddAdminUserPage(WebDriver driver) {
+	public AdminUserPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 
 	}
 
-	public void enterTheUseName(String username1) {
-		username.sendKeys(username1);
+	public void clickAddAdminUserButton() {
+
+		Adminuser.click();
 	}
 
-	public void enterThePassword(String password1) {
-		password.sendKeys(password1);
-	}
-
-	public void ButtonClickonSinginButton() {
-
-		singinbutton.click();
-	}
-
-	public void AddAdminuserButtonClick() {
-
-		AddAdminuser.click();
-	}
-
-	public void Newadminuserbuttonclick() {
+	public void clickNewAdminUserButton() {
 		Newadminuserbuttonclick.click();
 	}
 
-	public void enterTheAdminUserName(String Adimusername1) {
-		Adminusername.sendKeys(Adimusername1);
+	public void enterAdminUserName(String Adminuser)
+	{
+		Adminusername.sendKeys(Adminuser);
 	}
 
-	public void enterTheAdminUserPassword(String Adimpassword1) {
-		Adminusername.sendKeys(Adimpassword1);
+	public void enterAdminUserPassword(String Adimpassword) {
+		 Adminpassword.sendKeys(Adimpassword);
 	}
 
 	public void newAdminUserButtonClick() {
 		Newadminuserbuttonclick.click();
 		PageUtility pageutility = new PageUtility();
-		pageutility.selectByValue(AddAdminuser, "admin");
+		pageutility.selectByValue( Adminusertype, "admin");
 	}
 
-	public void adminSaveButtonClick() {
+	public void clickSaveButton() {
 		AdminSavebutton.click();
 	}
+	
+	public boolean isAlertUserCreatedSuccessfully()
+    {
+		return UserCreatedSuccessfully.isDisplayed() ;
+  	  
+    }
+	
+	
 
 }

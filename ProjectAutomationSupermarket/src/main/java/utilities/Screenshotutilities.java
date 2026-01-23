@@ -4,11 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.FileHandler;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.io.FileHandler;
+
 
 public class Screenshotutilities {
 	
@@ -29,7 +30,7 @@ public class Screenshotutilities {
 		+ ".png"; //set final screenshot path
 		
 		File finalDestination = new File(destination);
-		//FileHandler.copy(screenShot, finalDestination);   //save the screenshot
+		FileHandler.copy(screenShot, finalDestination);   //save the screenshot
 		}
 
 }

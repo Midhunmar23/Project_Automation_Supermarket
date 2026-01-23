@@ -12,11 +12,6 @@ import utilities.Waitutility;
 public class DashboardManageNewsPage 
 {
 	
-	   @FindBy(xpath="//input[@name='username']")WebElement username;
-	   @FindBy(xpath="//input[@name='password']")WebElement password;
-	  @FindBy(xpath="//button[text()='Sign In']")WebElement singinbutton;
-	  @FindBy(xpath="//p[text()='Dashboard']") WebElement Dashord;
-	 @FindBy(xpath="//div[contains(@class,'alert alert-danger ') ]") WebElement LogingValidationMessageforIncorrectUsername;
 	   @FindBy(xpath="//p[text()='Manage News']") WebElement NewsManageButtonClick;
 	   @FindBy(xpath="//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']") WebElement  NewsButtonClick;
 	   @FindBy(id="news") WebElement NewsTextArea;
@@ -38,48 +33,29 @@ public class DashboardManageNewsPage
 	       
 	       
 
-		   public void enterTheUseName(String username1)
-		     {
-		    	 username.sendKeys(username1);
-		     }
-		     
-		      public void enterThePassword(String password1) 
-		      {
-		    	  password.sendKeys(password1);
-		      }
-		      
-		      public boolean isDashboardDisplayed()
-		      {
-		    	  return Dashord.isDisplayed();
-		      }
-		      
-		      
-		      public void ButtonClickonSinginButton() 
-		      {
-		    	 
-		    	  waitutility.waitForElementToBeClickable(driver, singinbutton);
-		    	  singinbutton.click();
-		      }
-	       
 	        
-	        public void NewsManageButtonClick()
+	        public DashboardManageNewsPage NewsManageButtonClick()
 	        {
 	        	NewsManageButtonClick.click();
+	        	return this;
 	        }
 	        
-	        public void  NewsButtonClick()
+	        public DashboardManageNewsPage NewsButtonClick()
 	        {
 	        	 NewsButtonClick.click();
+	        	 return this;
 	        }
 	        
-	        public void EnterTheTextInField(String NewsTextArea1)
+	        public DashboardManageNewsPage EnterTheTextInField(String NewsTextArea1)
 	        {
 	        	NewsTextArea.sendKeys(NewsTextArea1);
+	        	return this;
 	        }
 	        
-	        public void SaveButtonClick()
+	        public DashboardManageNewsPage SaveButtonClick()
 	        {
 	        	SaveButtonClick.click();
+	        	return this;
 	        }
 	        
 	        

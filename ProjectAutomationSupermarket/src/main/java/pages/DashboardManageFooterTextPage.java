@@ -11,8 +11,7 @@ import utilities.Waitutility;
 public class DashboardManageFooterTextPage {
 
 	
-	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-footertext' and @class='small-box-footer']")
-	WebElement ManageFooterText;
+	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Footertext/edit?edit=1' and @class='btn btn-sm btn btn-primary btncss']")
 	WebElement actionFooterText;
 	@FindBy(css="textarea#content")
@@ -33,32 +32,37 @@ public class DashboardManageFooterTextPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void manageFooterText() {
-		ManageFooterText.click();
-	}
+	/*public void manageFootermoreinfo() {
+		ManageFootermoreinfo.click();
+	}*/
 
-	public void actionFooterText() {
+	public  DashboardManageFooterTextPage actionFooterText() {
 		actionFooterText.click();
+		return this;
 	}
 
-	public void enterTheAddressFooterManage(String Address) {
+	public  DashboardManageFooterTextPage enterTheAddressFooterManage(String Address) {
 		
 		ManagefooterAddress.clear();
 		ManagefooterAddress.sendKeys(Address);
+		return this;
 	}
 
-	public void enterTheEmailFooterManage(String Email) {
+	public  DashboardManageFooterTextPage enterTheEmailFooterManage(String Email) {
 		ContatpageEmail.clear();
 		ContatpageEmail.sendKeys(Email);
+		return this;
 	}
 
-	public void enterThePhoneFooterManage(String Phone) {
+	public  DashboardManageFooterTextPage enterThePhoneFooterManage(String Phone) {
 		ManageFooterpagePhonenumber.clear();
 		ManageFooterpagePhonenumber.sendKeys(Phone);
+		return this;
 	}
 
-	public void updateButtonManageContactPage() {
+	public  DashboardManageFooterTextPage updateButtonManageContactPage() {
 		UpdatebuttonManagecotactpage.click();
+		return this;
 
 	}
 	 public boolean AlertFooterTextUpdatedSuccessfully()

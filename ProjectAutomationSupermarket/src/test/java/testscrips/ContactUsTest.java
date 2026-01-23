@@ -8,10 +8,14 @@ import org.testng.annotations.Test;
 import constant.Constant;
 import pages.AdminUserPage;
 import pages.ContactUsPage;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class ContactUsTest extends Base {
+	
+	HomePage homepage;
+	ContactUsPage contactUsPage;
 
 	@Test(groups = {
 			"regression" }, description = "verifyTheUserIsAbleAddDetailsFromConatctUsPage", retryAnalyzer = retry.Retry.class)
@@ -21,15 +25,12 @@ public class ContactUsTest extends Base {
 		String password = ExcelUtility.getStringData(1, 1, "LogingData");
 
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterTheUserName(username);
-		loginPage.enterThePassword(password);
-		loginPage.ButtonClickonSinginButton();
+		loginPage.enterTheUserName(username).enterThePassword(password);
+		homepage=loginPage.ButtonClickonSinginButton();
 
-		boolean isDashboardDisplayed = loginPage.isDashboardDisplayed();
-		Assert.assertTrue(isDashboardDisplayed, Constant.DASHBOARDTEXT);
-
-		ContactUsPage contactUsPage = new ContactUsPage(driver);
-		contactUsPage.clickOnContactUsButton();
+		//ContactUsPage contactUsPage = new ContactUsPage(driver);
+		//contactUsPage.ContactUsMoreinfoButtonClick();;
+		contactUsPage=homepage.contactUsMoreinfoButtonClick();
 		contactUsPage.clickOnActionButton();
 
 		/*
@@ -43,13 +44,7 @@ public class ContactUsTest extends Base {
 		String companyAddress = ExcelUtility.getStringData(2, 0, "CompanyDetails");
 		String deliveryTime = ExcelUtility.getIntegerData(3, 0, "CompanyDetails");
 		String deliveryCharge = ExcelUtility.getIntegerData(4, 0, "CompanyDetails");
-		contactUsPage.enterCompanyPhoneNumer(phoneNumber);
-		contactUsPage.enterCompanyEmail(companyEmail);
-		contactUsPage.enterCompanyAddress(companyAddress);
-		contactUsPage.enterDeliveryTime(deliveryTime);
-		contactUsPage.enterDeliveryChargeLimit(deliveryCharge);
-
-		contactUsPage.clickOnUpdateButton();
+		contactUsPage.enterCompanyPhoneNumer(phoneNumber).enterCompanyEmail(companyEmail).enterCompanyAddress(companyAddress).enterDeliveryTime(deliveryTime).enterDeliveryChargeLimit(deliveryCharge).clickOnUpdateButton();
 		boolean AlertContactUpdatedSuccessfully = contactUsPage.AlertContactUpdatedSuccessfully();
 		Assert.assertTrue(AlertContactUpdatedSuccessfully, Constant.CONTACTUPDATEDSUCCESSFULLY);
 

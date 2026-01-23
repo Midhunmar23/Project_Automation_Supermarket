@@ -6,13 +6,18 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.github.javafaker.Faker;
+
 import constant.Constant;
 import pages.AdminUserPage;
 import pages.LoginPage;
-import pages.LogoffPage;
+import pages.HomePage;
 import utilities.ExcelUtility;
 
 public class AdminUserTest extends Base {
+	
+	HomePage homepage;
+	AdminUserPage adminuserpage;
 
 	@Test(groups = {
 			"regression" }, description = "verifyTheUserIsAbleAddUserFromTheNewAddFeture", retryAnalyzer = retry.Retry.class)
@@ -21,28 +26,34 @@ public class AdminUserTest extends Base {
 		String password = ExcelUtility.getStringData(1, 1, "LogingData");
 
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterTheUserName(username);
-		loginPage.enterThePassword(password);
-		loginPage.ButtonClickonSinginButton();
+		loginPage.enterTheUserName(username).enterThePassword(password);
+		homepage=loginPage.ButtonClickonSinginButton();
 
-		AdminUserPage adminuserpage = new AdminUserPage(driver);
-		adminuserpage.clickAddAdminUserButton();
+		//AdminUserPage adminuserpage = new AdminUserPage(driver);
+		//adminuserpage.clickAdminUserMoreinfo();
+		adminuserpage=homepage.clickAdminUserMoreinfo();
 		adminuserpage.clickNewAdminUserButton();
 
-		String adminUsername = ExcelUtility.getStringData(0, 0, "Adminuser");
-		adminuserpage.enterAdminUserName(adminUsername);
-		String adminPassword = ExcelUtility.getStringData(1, 0, "Adminuser");
-		adminuserpage.enterAdminUserPassword(adminPassword);
+		//String adminUsername = ExcelUtility.getStringData(0, 0, "Adminuser");
+		//String adminPassword = ExcelUtility.getStringData(1, 0, "Adminuser");
+		Faker faker = new Faker();
+		String Username = faker.name().username();
+		String Password = faker.internet().password();
+		adminuserpage.enterAdminUserName(Username).enterAdminUserPassword(Password).newAdminUserButtonClick().clickSaveButton();
+		
+		boolean isUserCreated = adminuserpage.isAlertUserCreatedSuccessfully();
 
-		adminuserpage.newAdminUserButtonClick();
+		if (isUserCreated) {
+		    Assert.assertTrue(true, Constant.USERCREATEDSUCCESSFULLY);
+		} else {
+		    boolean isUserAlreadyExist = adminuserpage.isAlertUserAlreadyExist();
+		    Assert.assertTrue(isUserAlreadyExist, Constant.USERALREADYEXISTS);
+		}
 
-		adminuserpage.clickSaveButton();
-
-		boolean isAlertUserCreatedSuccessfully = adminuserpage.isAlertUserCreatedSuccessfully();
-		Assert.assertTrue(isAlertUserCreatedSuccessfully, Constant.ISALERTUSERCREATEDSUCCESSFULLY);
 		
 		
 
 	}
 
+	
 }

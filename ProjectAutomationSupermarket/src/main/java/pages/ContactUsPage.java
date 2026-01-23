@@ -11,7 +11,7 @@ import utilities.Waitutility;
 public class ContactUsPage 
 {
 	
-	  @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-contact' and @class='small-box-footer']") WebElement ContactUsButtonClick;
+	  
 	  @FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/contact/edit_contact?edit=1' and @class='btn btn-sm btn btn-primary btncss']") WebElement actionbuttonclick;
 	  @FindBy(xpath="//input[@class='form-control' and @name='phone']") WebElement companyphonenumer;
 	  @FindBy(xpath="//input[@class='form-control' and @id='email']") WebElement companyemail;
@@ -35,50 +35,57 @@ public class ContactUsPage
 	       }
 	       
 		      
-		      public void clickOnContactUsButton()
+		     /* public void ContactUsMoreinfoButtonClick()
 		      {
-		    	  ContactUsButtonClick.click();
-		      }
+		    	  ContactUsMoreinfo.click();
+		      }*/
 		      
-		      public void clickOnActionButton()
+		      public ContactUsPage  clickOnActionButton()
 		      {
 		    	  actionbuttonclick.click();
+				  return this;
 		      }
 		      
 		      
-		      public void enterCompanyPhoneNumer(String phonenumer)
+		      public ContactUsPage enterCompanyPhoneNumer(String phonenumer)
 		      {
 		    	  companyphonenumer.clear();
 		    	  companyphonenumer.sendKeys(phonenumer);
+				  return this;
 		      }
 		      
-		     public void  enterCompanyEmail(String CompanyEmail)
+		     public ContactUsPage enterCompanyEmail(String CompanyEmail)
 		      {
 		    	  companyemail.clear();
 		    	  companyemail.sendKeys(CompanyEmail);
+				  return this;
 		      }
 		      
-		      public void enterCompanyAddress(String CompanyAddress)
+		      public ContactUsPage enterCompanyAddress(String CompanyAddress)
 		      {
 		    	  companyaddress.clear();
 		    	  companyaddress.sendKeys(CompanyAddress);
+				  return this;
 		      }
 		      
-		      public void enterDeliveryTime(String Time)
+		      public ContactUsPage enterDeliveryTime(String Time)
 		      {
 		    	  deliverytime.clear();
 		    	  deliverytime.sendKeys(Time);
+				  return this;
 		      }
 		      
-              public void  enterDeliveryChargeLimit(String DeleveryCharge)
+              public ContactUsPage   enterDeliveryChargeLimit(String DeleveryCharge)
               {
             	  DeliveryChargeLimit.clear();
             	  DeliveryChargeLimit.sendKeys(DeleveryCharge);
+				  return this;
               }
               
-              public void clickOnUpdateButton()
+              public ContactUsPage  clickOnUpdateButton()
               {
             	  UpdateButtonClick.click();
+				  return this;
               }
               
               public boolean AlertContactUpdatedSuccessfully()

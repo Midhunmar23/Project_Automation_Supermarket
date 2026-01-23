@@ -7,13 +7,6 @@
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="testscrips.AdminUserTest">
-        <methods>
-          <include name="verifyTheUserIsAbleAddUserFromTheNewAddFeture"/>
-          <include name="browserIntilization"/>
-          <include name="closeBrowser"/>
-        </methods>
-      </class> <!-- testscrips.AdminUserTest -->
       <class name="testscrips.ManageCategoryTest">
         <methods>
           <include name="browserIntilization"/>
@@ -21,13 +14,6 @@
           <include name="verifyTheUserIsAbleToAddCategory"/>
         </methods>
       </class> <!-- testscrips.ManageCategoryTest -->
-      <class name="testscrips.LogoffTest">
-        <methods>
-          <include name="verifyTheUserIsAbleToLogoffFromTheCreatedAccount"/>
-          <include name="browserIntilization"/>
-          <include name="closeBrowser"/>
-        </methods>
-      </class> <!-- testscrips.LogoffTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

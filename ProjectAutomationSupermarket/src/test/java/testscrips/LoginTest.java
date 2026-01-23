@@ -3,15 +3,19 @@ package testscrips;
 import java.io.IOException;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
 import constant.Constant;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base {
+	
+	HomePage homepage;
 
 	@Test(groups = {
 			"regression" }, description = "verifyTheUserIsAbleToLoginTheSinginUsingValdCrediatiols", retryAnalyzer = retry.Retry.class)
@@ -19,9 +23,8 @@ public class LoginTest extends Base {
 		String Username = ExcelUtility.getStringData(1, 0, "LogingData");
 		String Password = ExcelUtility.getStringData(1, 1, "LogingData");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterTheUserName(Username);
-		loginpage.enterThePassword(Password);
-		loginpage.ButtonClickonSinginButton();
+		loginpage.enterTheUserName(Username).enterThePassword(Password);
+		homepage=loginpage.ButtonClickonSinginButton();
 		boolean isDashboardDisplayed = loginpage.isDashboardDisplayed();
 		Assert.assertTrue(isDashboardDisplayed, Constant.DASHBOARDTEXT);
 	}
@@ -38,9 +41,8 @@ public class LoginTest extends Base {
 		String Password = faker.internet().password();
 
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterTheUserName(Username);
-		loginpage.enterThePassword(Password);
-		loginpage.ButtonClickonSinginButton();
+		loginpage.enterTheUserName(Username).enterThePassword(Password);
+		homepage=loginpage.ButtonClickonSinginButton();
 		boolean isLoginPageDisplayed = loginpage.isLoginPageDisplayed();
 		Assert.assertTrue(isLoginPageDisplayed, Constant.INVALIDLOGINERRORMESSAGE
 
@@ -54,9 +56,8 @@ public class LoginTest extends Base {
 		String Username = ExcelUtility.getStringData(3, 0, "LogingData");
 		String Password = ExcelUtility.getStringData(3, 1, "LogingData");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterTheUserName(Username);
-		loginpage.enterThePassword(Password);
-		loginpage.ButtonClickonSinginButton();
+		loginpage.enterTheUserName(Username).enterThePassword(Password);
+		homepage=loginpage.ButtonClickonSinginButton();
 		boolean isLoginPageDisplayed = loginpage.isLoginPageDisplayed();
 		Assert.assertTrue(isLoginPageDisplayed, Constant.INVALIDLOGINERRORMESSAGE
 
@@ -64,20 +65,24 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test(groups = {
-			"regression" }, description = "verifyThatTheUserSholudNotAbleToSinginWithInVaidUsernameandInvalidPassword", retryAnalyzer = retry.Retry.class)
-	public void verifyThatTheUserSholudNotAbleToSinginWithInVaidUsernameandInvalidPassword() throws IOException {
-		String Username = ExcelUtility.getStringData(4, 0, "LogingData");
-		String Password = ExcelUtility.getStringData(4, 1, "LogingData");
+	@Test(dataProvider="loginProvider",groups = {"regression" }, description = "verifyThatTheUserSholudNotAbleToSinginWithInVaidUsernameandInvalidPassword", retryAnalyzer = retry.Retry.class)
+	public void verifyThatTheUserSholudNotAbleToSinginWithInVaidUsernameandInvalidPassword(String Username, String Password) throws IOException {
+		//String Username = ExcelUtility.getStringData(4, 0, "LogingData");
+		//String Password = ExcelUtility.getStringData(4, 1, "LogingData");
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.enterTheUserName(Username);
-		loginpage.enterThePassword(Password);
-		loginpage.ButtonClickonSinginButton();
+		loginpage.enterTheUserName(Username).enterThePassword(Password);
+		homepage=loginpage.ButtonClickonSinginButton();
 		boolean isLoginPageDisplayed = loginpage.isLoginPageDisplayed();
 		Assert.assertTrue(isLoginPageDisplayed, Constant.INVALIDLOGINERRORMESSAGE
 
 		);
 
 	}
+	
+	@DataProvider(name = "loginProvider")
+	public Object[][] getDataFromDataProvider() throws IOException {
 
+		return new Object[][] { new Object[] { "admin", "admin22" }, new Object[] { "admin123", "123" },};
+
+}
 }

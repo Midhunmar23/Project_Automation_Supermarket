@@ -11,8 +11,7 @@ import utilities.PageUtility;
 import utilities.Waitutility;
 
 public class ManageCategoryPage {
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-category' and @class='small-box-footer']")
-	WebElement ManageCatagoryButtonClick;
+	
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger' and @href='https://groceryapp.uniqassosiates.com/admin/Category/add']")
 	WebElement CategoryNewcButtonClick;
 	@FindBy(id="category")
@@ -36,36 +35,42 @@ public class ManageCategoryPage {
 	}
 
 
-	public void manageCatagoryButtonClick() {
-		ManageCatagoryButtonClick.click();
-	}
-	public void categoryNewcButtonClick() {
+	/*public void manageCatagoryMoreinfo() {
+		ManageCatagoryMoreinfo.click();
+	}*/
+	public ManageCategoryPage categoryNewcButtonClick() {
 		CategoryNewcButtonClick.click();
+		return this;
 	}
 	
 
-	public void enterTheManageCatagoryCatagoryText(String ManageCatagoryText) {
+	public ManageCategoryPage enterTheManageCatagoryCatagoryText(String ManageCatagoryText) {
 		ManageCatagoryCatagoryText.sendKeys(ManageCatagoryText);
+		return this;
 	}
 	
-	public void selectTheradiobuttonclickonshowOnTopMenu()
+	public ManageCategoryPage selectTheradiobuttonclickonshowOnTopMenu()
 	{
 		radiobuttonclickonshowOnTopMenu.click();
+		return this;
 	}
 	
-	public void selectTheradiobuttonclickOnLeftMenu()
+	public ManageCategoryPage selectTheradiobuttonclickOnLeftMenu()
 	{
 		PageUtility pageutility= new PageUtility();
 		pageutility.radioButtonSelect(selectTheradiobuttonclickOnLeftMenu);
+		return this;
 	}
 
-	public void imageUploadManageCatagory() {
+	public ManageCategoryPage imageUploadManageCatagory() {
 
 		fileuploadutility.fileuploadUsingSendKeys(imageuploadButton, Constant.CARIMAGE);
+		return this;
 	}
 
-	public void saveButtonClick() {
+	public ManageCategoryPage saveButtonClick() {
 		SavebuttonManageCatagoryclick.click();
+		return this;
 	}
 
 }

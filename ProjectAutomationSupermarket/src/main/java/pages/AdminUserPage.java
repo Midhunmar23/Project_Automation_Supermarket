@@ -12,8 +12,7 @@ import utilities.Waitutility;
 
 public class AdminUserPage {
 	
-	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
-	WebElement Adminuser;
+	
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
 	WebElement Newadminuserbuttonclick;
 	@FindBy(xpath="//input[@class='form-control' and @name='username']")
@@ -26,6 +25,8 @@ public class AdminUserPage {
 	WebElement AdminSavebutton;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement UserCreatedSuccessfully;
+    @FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
+    WebElement userAlreadyExist;
 	
 
 	public WebDriver driver;
@@ -38,39 +39,55 @@ public class AdminUserPage {
 
 	}
 
-	public void clickAddAdminUserButton() {
+	/*public void clickAdminUserMoreinfo() {
 
-		Adminuser.click();
-	}
+		Adminusermoreinfo.click();
+	}*/
 
-	public void clickNewAdminUserButton() {
+	public AdminUserPage clickNewAdminUserButton() {
 		Newadminuserbuttonclick.click();
+		return this;
+		
 	}
 
-	public void enterAdminUserName(String Adminuser)
+	public AdminUserPage enterAdminUserName(String Adminuser)
 	{
 		Adminusername.sendKeys(Adminuser);
+		return this;
 	}
 
-	public void enterAdminUserPassword(String Adimpassword) {
+	public AdminUserPage enterAdminUserPassword(String Adimpassword) {
 		 Adminpassword.sendKeys(Adimpassword);
+		 return this;
 	}
 
-	public void newAdminUserButtonClick() {
+	public AdminUserPage newAdminUserButtonClick() {
 		Newadminuserbuttonclick.click();
 		PageUtility pageutility = new PageUtility();
 		pageutility.selectByValue( Adminusertype, "admin");
+		return this;
 	}
 
-	public void clickSaveButton() {
+	public AdminUserPage clickSaveButton() {
 		AdminSavebutton.click();
+		return this;
 	}
 	
-	public boolean isAlertUserCreatedSuccessfully()
-    {
-		return UserCreatedSuccessfully.isDisplayed() ;
-  	  
-    }
+	public boolean isAlertUserCreatedSuccessfully() {
+	    try {
+	        return UserCreatedSuccessfully.isDisplayed();
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
+
+	public boolean isAlertUserAlreadyExist() {
+	    try {
+	        return userAlreadyExist.isDisplayed();
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
 	
 	
 

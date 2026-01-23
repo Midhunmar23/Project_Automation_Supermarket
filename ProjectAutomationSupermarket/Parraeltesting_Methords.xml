@@ -4,25 +4,21 @@
 	<test thread-count="5" name="ChromeTest">
 	<parameter name="browser" value="Chrome"></parameter>
 		<classes>
-			<class name="testscrips.LoginTest"> </class>
-			<class name="testscrips.LogoffTest"> </class>
-			<class name="testscrips.DashboardManageNewsTest"> </class>
-			<class name="testscrips.ContactUsTest"> </class>
+			<class name="testscrips.HomeTest"> </class>
 			<class name="testscrips.AdminUserTest"> </class>
+			<class name="testscrips.ContactUsTest"> </class>
+			<class name="testscrips.DashboardManageFooterTextTest"> </class>
 			<class name="testscrips.ManageCategoryTest"> </class>
-			<class name="testscrips.DashboardManageNewsTest"> </class>
 		</classes>
 	</test> 
 	<test thread-count="5" name="FireFoxTest">
 		<parameter name="browser" value="Firefox"></parameter>
 		<classes>
-			<class name="testscrips.LoginTest"> </class>
-			<class name="testscrips.LogoffTest"> </class>
-			<class name="testscrips.DashboardManageNewsTest"> </class>
-			<class name="testscrips.ContactUsTest"> </class>
+			<class name="testscrips.HomeTest"> </class>
 			<class name="testscrips.AdminUserTest"> </class>
+			<class name="testscrips.ContactUsTest"> </class>
+			<class name="testscrips.DashboardManageFooterTextTest"> </class>
 			<class name="testscrips.ManageCategoryTest"> </class>
-			<class name="testscrips.DashboardManageNewsTest"> </class>
 		</classes>
 	</test> 
 		

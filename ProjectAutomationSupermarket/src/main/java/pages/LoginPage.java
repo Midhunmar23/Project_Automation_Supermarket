@@ -33,21 +33,26 @@ public class LoginPage
 		
 	      }
 
-		 public void enterTheUserName(String username1)
+		 public LoginPage  enterTheUserName(String username1)
 	     {
 	    	 username.sendKeys(username1);
+			 return this;
+	    	
 	     }
 		 
 	     
-	      public void enterThePassword(String password1) 
+	      public LoginPage enterThePassword(String password1) 
 	      {
 	    	  password.sendKeys(password1);
+	    	  return this;
+	    	  
 	      }
-	      public void ButtonClickonSinginButton() 
+	      public HomePage ButtonClickonSinginButton() 
 	      {
 	    	 
 	    	  waitutility.waitForElementToBeClickable(driver, singinbutton);
 	    	  singinbutton.click();
+			  return new HomePage(driver);
 	      }
 	      
 	     /* public void choseFile()

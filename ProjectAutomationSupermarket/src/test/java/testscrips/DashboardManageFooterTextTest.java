@@ -8,11 +8,15 @@ import org.testng.annotations.Test;
 import constant.Constant;
 import pages.ContactUsPage;
 import pages.DashboardManageFooterTextPage;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class DashboardManageFooterTextTest extends Base {
 
+	HomePage homepage;
+	DashboardManageFooterTextPage dashboardManageFooterTextPage;
+	
 	@Test(groups = {
 			"regression" }, description = "verifyTheUserIsAbleAddDetailsFromConatctUsPage", retryAnalyzer = retry.Retry.class)
 	public void verifyTheUserIsAbleAddDetailsFromManageFooterPage() throws IOException {
@@ -23,11 +27,14 @@ public class DashboardManageFooterTextTest extends Base {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterTheUserName(username);
 		loginPage.enterThePassword(password);
-		loginPage.ButtonClickonSinginButton();
+		homepage=loginPage.ButtonClickonSinginButton();
 
-		DashboardManageFooterTextPage dashboardManageFooterTextPage = new DashboardManageFooterTextPage(driver);
-		dashboardManageFooterTextPage.manageFooterText();
-		dashboardManageFooterTextPage.actionFooterText();
+		//DashboardManageFooterTextPage dashboardManageFooterTextPage = new DashboardManageFooterTextPage(driver);
+		//dashboardManageFooterTextPage.manageFootermoreinfo();
+		
+		//dashboardManageFooterTextPage=homepage.manageFootermoreinfo();
+		
+		dashboardManageFooterTextPage= homepage.manageFootermoreinfo().actionFooterText();
 
 		/*
 		 * String address= "1234avenuew"; String email="midhun254@yopmail.com"; String
@@ -37,10 +44,7 @@ public class DashboardManageFooterTextTest extends Base {
 		String email = ExcelUtility.getStringData(1, 0, "ContactFooterInfo");
 		String phone = ExcelUtility.getIntegerData(2, 0, "ContactFooterInfo");
 
-		dashboardManageFooterTextPage.enterTheAddressFooterManage(address);
-		dashboardManageFooterTextPage.enterTheEmailFooterManage(email);
-		dashboardManageFooterTextPage.enterThePhoneFooterManage(phone);
-
+		dashboardManageFooterTextPage.enterTheAddressFooterManage(address).enterTheEmailFooterManage(email).enterThePhoneFooterManage(phone);
 		dashboardManageFooterTextPage.updateButtonManageContactPage();
 
 		boolean AlertFooterTextUpdatedSuccessfully = dashboardManageFooterTextPage.AlertFooterTextUpdatedSuccessfully();

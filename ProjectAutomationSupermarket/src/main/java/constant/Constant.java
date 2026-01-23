@@ -11,8 +11,8 @@ public class Constant
 	public static final String NEWSCREATEDSUCCESSFULLY = "News Created Successfully";
 	public static final String FOOTERTEXTUPDATEDSUCCESSFULLYALERT="Footer Text Updated Successfully";        
 	public static final String CONTACTUPDATEDSUCCESSFULLY= "Contact Updated Successfully";
-	public static final String ISALERTUSERCREATEDSUCCESSFULLY= "User Created Successfully";
-    public static final String ISTHEUSERNAMEANDPASSWORDEXISTS = "Username already exists";
+	public static final String USERCREATEDSUCCESSFULLY= "User Created Successfully";
+	public static final String USERALREADYEXISTS ="User already exists";
 	
 
 }

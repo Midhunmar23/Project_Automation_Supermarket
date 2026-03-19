@@ -21,13 +21,25 @@ public class Waitutility {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAIT));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
+	
+	public void waitElementToBeClickable(WebDriver driver, WebElement element)
+	{
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAIT));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+	}
 
-	public void WaitForElement(WebDriver driver, WebElement target) {
+	public void waitForElement(WebDriver driver, WebElement target) {
 
 		Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(FLUENTWAIT))
 				.pollingEvery(Duration.ofSeconds(POLLWAIT)).ignoring(NoSuchElementException.class);
 		fluentWait.until(ExpectedConditions.elementToBeClickable(target));
 	}
+	
+
+	
+	
+
 
 	public void WaitForElementVisible(WebDriver driver, WebElement target) {
 

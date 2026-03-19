@@ -13,7 +13,7 @@ import utilities.Waitutility;
 public class AdminUserPage {
 	
 	
-	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger' and @onclick='click_button(1)']")
 	WebElement Newadminuserbuttonclick;
 	@FindBy(xpath="//input[@class='form-control' and @name='username']")
 	WebElement Adminusername;
@@ -49,6 +49,7 @@ public class AdminUserPage {
 		return this;
 		
 	}
+	
 
 	public AdminUserPage enterAdminUserName(String Adminuser)
 	{

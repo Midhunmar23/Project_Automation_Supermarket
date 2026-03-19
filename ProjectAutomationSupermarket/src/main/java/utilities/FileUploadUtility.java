@@ -14,6 +14,11 @@ public class FileUploadUtility
 	{
          elementname.sendKeys(Path);
 	}
+	
+	public void fileUploadUsingSendKeys(WebElement elementname, String path)
+	{
+		elementname.sendKeys(path);
+	}
 
 	public void fileUploadingUsingRoboClass(WebElement elementname, String Path) throws AWTException
 	{
@@ -27,7 +32,7 @@ public class FileUploadUtility
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+		
 	}
 
 }
